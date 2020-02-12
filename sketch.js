@@ -16,13 +16,6 @@ function draw() {
   background(0);
   noStroke();
   board();
-  // if (rTurn) {
-  //   txt[16].html('Red\'s Turn');
-  //   txt[16].style('color:#FF0000');
-  // } else {
-  //   txt[16].html('Black\'s Turn')
-  //   txt[16].style('color:#FFFFFF');
-  // }
   for (let i = 0; i < men.length; i++) {
     men[i].draw();
   }
