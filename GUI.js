@@ -15,5 +15,5 @@ function gui() {
   button = createButton('make move');
   button.position(6*sS, height + 180);
   button.size(100, 20);
-  button.mousePressed(check);
+  button.mouseClicked(check);
 }
