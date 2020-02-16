@@ -11,7 +11,7 @@ function check() {
   let mh = 0;
 
   let mC = int(inputB.value());
-  let a = unchar(split(inputA.value(), '')[0]) - 65;
+  let a = unchar(split(inputA.value(), '')[0].toUpperCase()) - 65;
   let b = int(split(inputA.value(), '')[1]) - 1;
   if (0 <= a && a <= 7 && 0 <= b && b <= 7) {
     rect(sS * a, sS * b, sS * (a + 1), sS * (b + 1));
