@@ -58,41 +58,43 @@ function pMoves() {
   noFill();
   stroke(255, 255, 0);
   strokeWeight(5);
-  let a = unchar(split(inputA.value(), '')[0].toUpperCase()) - 65;
-  let b = int(split(inputA.value(), '')[1]) - 1;
-  if (0 <= a && a <= 7 && 0 <= b && b <= 7) {
-    rect(sS * a, sS * b, sS * (a + 1), sS * (b + 1));
-    let num = isMan(a, b);
-    if (num != -1) {
-      if ((men[num].side && rTurn) || (!men[num].side && men[num].kinged && !rTurn)) {
-        if (b - 1 >= 0 && isMan((a + 7) % 8, b - 1) == -1) {
-          highL((a + 7) % 8, b - 1, 0);
-        } else if (b - 2 >= 0 && isMan((a + 6) % 8, b - 2) == -1 && isMan((a + 7) % 8, b - 1) != -1) {
-          if (xor(men[num].side, men[isMan((a + 7) % 8, b - 1)].side)) {
-            highL((a + 6) % 8, b - 2, 1);
+  if (inputA.value() != '') {
+    let a = unchar(split(inputA.value(), '')[0].toUpperCase()) - 65;
+    let b = int(split(inputA.value(), '')[1]) - 1;
+    if (0 <= a && a <= 7 && 0 <= b && b <= 7) {
+      rect(sS * a, sS * b, sS * (a + 1), sS * (b + 1));
+      let num = isMan(a, b);
+      if (num != -1) {
+        if ((men[num].side && rTurn) || (!men[num].side && men[num].kinged && !rTurn)) {
+          if (b - 1 >= 0 && isMan((a + 7) % 8, b - 1) == -1) {
+           highL((a + 7) % 8, b - 1, 0);
+          } else if (b - 2 >= 0 && isMan((a + 6) % 8, b - 2) == -1 && isMan((a + 7) % 8, b - 1) != -1) {
+            if (xor(men[num].side, men[isMan((a + 7) % 8, b - 1)].side)) {
+              highL((a + 6) % 8, b - 2, 1);
+            }
+          }
+          if (b - 1 >= 0 && isMan((a + 1) % 8, b - 1) == -1) {
+            highL((a + 1) % 8, b - 1, 2);
+          } else if (b - 2 >= 0 && isMan((a + 2) % 8, b - 2) == -1 && isMan((a + 1) % 8, b - 1) != -1) {
+            if (xor(men[num].side, men[isMan((a + 1) % 8, b - 1)].side)) {
+              highL((a + 2) % 8, b - 2, 3);
+            }
           }
         }
-        if (b - 1 >= 0 && isMan((a + 1) % 8, b - 1) == -1) {
-          highL((a + 1) % 8, b - 1, 2);
-        } else if (b - 2 >= 0 && isMan((a + 2) % 8, b - 2) == -1 && isMan((a + 1) % 8, b - 1) != -1) {
-          if (xor(men[num].side, men[isMan((a + 1) % 8, b - 1)].side)) {
-            highL((a + 2) % 8, b - 2, 3);
+        if ((!men[num].side && !rTurn) || (men[num].side && men[num].kinged && rTurn)) {
+          if (b + 1 <= 7 && isMan((a + 7) % 8, b + 1) == -1) {
+            highL((a + 7) % 8, b + 1, 4);
+          } else if (b + 2 <= 7 && isMan((a + 6) % 8, b + 2) == -1 && isMan((a + 7) % 8, b + 1) != -1) {
+           if (xor(men[num].side, men[isMan((a + 7) % 8, b + 1)].side)) {
+              highL((a + 6) % 8, b + 2, 5);
+            }
           }
-        }
-      }
-      if ((!men[num].side && !rTurn) || (men[num].side && men[num].kinged && rTurn)) {
-        if (b + 1 <= 7 && isMan((a + 7) % 8, b + 1) == -1) {
-          highL((a + 7) % 8, b + 1, 4);
-        } else if (b + 2 <= 7 && isMan((a + 6) % 8, b + 2) == -1 && isMan((a + 7) % 8, b + 1) != -1) {
-          if (xor(men[num].side, men[isMan((a + 7) % 8, b + 1)].side)) {
-            highL((a + 6) % 8, b + 2, 5);
-          }
-        }
-        if (b + 1 <= 7 && isMan((a + 1) % 8, b + 1) == -1) {
-          highL((a + 1) % 8, b + 1, 6);
-        } else if (b + 2 <= 7 && isMan((a + 2) % 8, b + 2) == -1 && isMan((a + 1) % 8, b + 1) != -1) {
-          if (xor(men[num].side, men[isMan((a + 1) % 8, b + 1)].side)) {
-            highL((a + 2) % 8, b + 2, 7);
+          if (b + 1 <= 7 && isMan((a + 1) % 8, b + 1) == -1) {
+            highL((a + 1) % 8, b + 1, 6);
+          } else if (b + 2 <= 7 && isMan((a + 2) % 8, b + 2) == -1 && isMan((a + 1) % 8, b + 1) != -1) {
+            if (xor(men[num].side, men[isMan((a + 1) % 8, b + 1)].side)) {
+             highL((a + 2) % 8, b + 2, 7);
+            }
           }
         }
       }
